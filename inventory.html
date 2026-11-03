@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Inventory | AutoNova Premium Automotive Marketplace</title>
+  <meta name="description" content="Search, filter, and sort AutoNova's curated collection of sedans, SUVs, coupes, hatchbacks, and electric vehicles with transparent pricing.">
+
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS & Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Shared AutoNova Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- AutoNova Sports-Coupe Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="alternate icon" href="assets/images/favicon.svg">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ====================================================================
+       GLOBAL HEADER & NAVIGATION
+       ==================================================================== -->
+  <header class="an-header" role="banner">
+    <div class="an-container an-header-inner">
+      <a href="index.html" class="an-brand" aria-label="AutoNova Home">
+        <svg class="an-brand-car-svg" viewBox="0 0 92 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M4 22.5C10 20.5 16 14.5 25 10.5C34 6.5 45 6 55 11.5C60 14.2 64 15.2 72 16C79 16.7 85 18.8 89 22C84 20.4 78 19.3 71 19C62 18.6 56 16.5 51 13.5C43 8.8 34 9.2 25 13.5C17 17.3 11 21.2 4 22.5Z" fill="#E63946"/>
+          <path d="M9 24.5C13 21.5 18 20 23.5 20C29 20 33.5 22 36 25H56C58.5 22 63 20 68.5 20C74 20 79 21.5 83 24.5" stroke="#E63946" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M26 16.5C35 14.5 47 15 60 18.5" stroke="#E63946" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="23.5" cy="25.5" r="3.2" fill="#E63946"/>
+          <circle cx="68.5" cy="25.5" r="3.2" fill="#E63946"/>
+        </svg>
+        <span><span class="an-brand-auto">Auto</span><span class="an-brand-accent">Nova</span></span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="an-nav-list">
+          <li><a href="index.html" class="an-nav-link">Home</a></li>
+          <li><a href="inventory.html" class="an-nav-link active" aria-current="page">Inventory</a></li>
+          <li><a href="vehicle-details.html" class="an-nav-link">Vehicle Details</a></li>
+          <li><a href="contact.html" class="an-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="an-header-actions">
+        <button
+          type="button"
+          class="an-search-trigger"
+          id="headerSearchToggle"
+          aria-label="Open vehicle search"
+          aria-expanded="false"
+          aria-controls="headerSearchBar"
+        >
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+
+        <a
+          href="inventory.html"
+          class="an-header-fav-btn"
+          aria-label="View shortlisted vehicles"
+          title="Shortlisted Vehicles"
+        >
+          <i class="bi bi-heart" aria-hidden="true"></i>
+          <span class="an-header-fav-badge">3</span>
+        </a>
+
+        <a href="contact.html#contact-form-section" class="btn-an-primary an-header-cta" style="border-radius: 10px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <circle cx="12" cy="12" r="2.5"/>
+            <path d="M12 14.5V21"/>
+            <path d="M9.8 10.8L3.6 8.5"/>
+            <path d="M14.2 10.8L20.4 8.5"/>
+          </svg>
+          <span>Book a Test Drive</span>
+        </a>
+
+        <button
+          type="button"
+          class="an-menu-toggle"
+          id="mobileMenuToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobileNavPanel"
+        >
+          <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Compact Header Search Bar -->
+    <div class="an-header-search-bar" id="headerSearchBar" role="region" aria-label="Quick Inventory Search">
+      <div class="an-container">
+        <form action="inventory.html" method="get" class="an-header-search-form">
+          <label for="headerSearchInput" class="visually-hidden">Search by manufacturer, model, or category</label>
+          <input
+            type="search"
+            id="headerSearchInput"
+            name="q"
+            class="an-header-search-input"
+            placeholder="Search Mercedes-Benz, McLaren, Porsche Taycan, Hyundai IONIQ, BMW M4..."
+          >
+          <button type="submit" class="btn-an-primary">
+            Search <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Panel -->
+    <div class="an-mobile-nav" id="mobileNavPanel" aria-label="Mobile Navigation">
+      <form action="inventory.html" method="get" class="an-mobile-search-form">
+        <label for="mobileSearchInput" class="visually-hidden">Search vehicles by manufacturer or model</label>
+        <input
+          type="search"
+          id="mobileSearchInput"
+          name="q"
+          class="an-mobile-search-input"
+          placeholder="Search Tucson, McLaren, Taycan..."
+        >
+        <button type="submit" class="btn-an-primary py-2 px-3" aria-label="Search Inventory">
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+      </form>
+
+      <ul class="an-mobile-nav-list">
+        <li>
+          <a href="index.html" class="an-mobile-nav-link">
+            <span>Home</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="inventory.html" class="an-mobile-nav-link active" aria-current="page">
+            <span>Inventory</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="vehicle-details.html" class="an-mobile-nav-link">
+            <span>Vehicle Details</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html" class="an-mobile-nav-link">
+            <span>Contact</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+
+      <a href="inventory.html" class="an-mobile-fav-row" aria-label="View shortlisted vehicles">
+        <span><i class="bi bi-heart-fill text-accent-red me-2" aria-hidden="true"></i>Shortlisted Vehicles</span>
+        <span class="an-header-fav-badge">3</span>
+      </a>
+
+      <div class="d-grid gap-2">
+        <a href="contact.html#contact-form-section" class="btn-an-primary w-100">
+          Book a Test Drive <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ==================================================================
+         SECTION 6.A — UNIFORM SUBPAGE HERO (INVENTORY — 390PX STAGE)
+         ================================================================== -->
+    <section class="an-subpage-hero" aria-labelledby="inventory-page-heading">
+      <div class="an-subpage-hero-bg">
+        <img
+          src="assets/images/5.jpg"
+          alt="AutoNova multi-brand luxury and exotic showroom featuring Mercedes-AMG, Maserati, and Audi models"
+          class="an-subpage-hero-bg-img"
+          width="1289"
+          height="860"
+        >
+        <div class="an-subpage-hero-bg-fade" aria-hidden="true"></div>
+      </div>
+
+      <div class="an-container an-subpage-hero-inner">
+        <div class="an-subpage-hero-row">
+          <div class="an-subpage-hero-left">
+            <nav aria-label="Breadcrumb">
+              <ol class="an-breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li aria-hidden="true">/</li>
+                <li class="an-breadcrumb-current" aria-current="page">Inventory</li>
+              </ol>
+            </nav>
+            <span class="an-snip-eyebrow hero-anim-eyebrow">THE AUTONOVA COLLECTION</span>
+            <h1 class="an-subpage-title hero-anim-title" id="inventory-page-heading">
+              Explore Our <span class="text-accent-red">Extraordinary</span> Vehicles.
+            </h1>
+            <p class="an-subpage-subtitle hero-anim-lead">
+              Discover the right balance of style, performance, comfort, and everyday value across our verified showroom lineup.
+            </p>
+
+            <div class="an-snip-cred-row hero-anim-cred" aria-label="Showroom Inventory Highlights">
+              <div class="an-snip-cred-item">
+                <i class="bi bi-car-front an-snip-cred-icon" aria-hidden="true"></i>
+                <div>
+                  <span class="an-snip-cred-title">15 Showroom Cars</span>
+                  <span class="an-snip-cred-sub">Ready for inspection</span>
+                </div>
+              </div>
+              <div class="an-snip-cred-item">
+                <i class="bi bi-shield-check an-snip-cred-icon" aria-hidden="true"></i>
+                <div>
+                  <span class="an-snip-cred-title">150-Point Certified</span>
+                  <span class="an-snip-cred-sub">Workshop verified</span>
+                </div>
+              </div>
+              <div class="an-snip-cred-item">
+                <i class="bi bi-lightning-charge an-snip-cred-icon" aria-hidden="true"></i>
+                <div>
+                  <span class="an-snip-cred-title">EV, Hybrid &amp; V8</span>
+                  <span class="an-snip-cred-sub">Every powertrain</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="an-subpage-hero-right hero-anim-card">
+            <div class="an-subpage-float-card">
+              <span class="an-snip-featured-pill">SHOWROOM LINEUP</span>
+              <h2 class="an-snip-card-title">Curated Fleet</h2>
+              <span class="an-snip-card-sub">2023–2025 • Multi-Brand</span>
+              <ul class="an-snip-spec-list mt-2 mb-3">
+                <li><i class="bi bi-check2-circle text-danger" aria-hidden="true"></i> <span>SUVs, Sedans &amp; Coupes</span></li>
+                <li><i class="bi bi-check2-circle text-danger" aria-hidden="true"></i> <span>Upfront Transparent Price</span></li>
+                <li><i class="bi bi-check2-circle text-danger" aria-hidden="true"></i> <span>Instant Test-Drive Slot</span></li>
+              </ul>
+              <a href="#filterSearch" class="btn-an-primary an-snip-card-btn">
+                Filter Vehicles <i class="bi bi-sliders ms-1" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 6.B, 6.C, 6.D, 6.E — FILTER SYSTEM, GRID, EMPTY STATE & LOAD MORE
+         ================================================================== -->
+    <section class="an-section pt-4" aria-label="Vehicle Search and Results">
+      <div class="an-container">
+        <!-- Search & Filter Toolbar -->
+        <div class="an-filter-panel" role="search" aria-label="Filter vehicles">
+          <div class="row g-2 align-items-end">
+            <!-- Always visible Search Input -->
+            <div class="col-12 col-md-7 col-lg-5">
+              <label for="filterSearch" class="an-form-label">Search by Manufacturer or Model</label>
+              <div class="position-relative">
+                <input
+                  type="search"
+                  id="filterSearch"
+                  class="an-input"
+                  placeholder="e.g., Mercedes-Benz, McLaren, Porsche, IONIQ, M4..."
+                >
+              </div>
+            </div>
+
+            <!-- Always visible Sort Control on Tablet/Desktop -->
+            <div class="col-12 col-sm-6 col-md-5 col-lg-3">
+              <label for="filterSort" class="an-form-label">Sort Vehicles By</label>
+              <select id="filterSort" class="an-select">
+                <option value="featured">Featured Curated Order</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="newest">Model Year: Newest First</option>
+              </select>
+            </div>
+
+            <!-- Mobile Filter Drawer Button -->
+            <div class="col-12 col-sm-6 d-md-none mt-2">
+              <button
+                type="button"
+                class="btn-an-outline w-100"
+                id="mobileFilterToggleBtn"
+                aria-expanded="false"
+                aria-controls="filterCollapsibleArea"
+              >
+                <i class="bi bi-sliders" aria-hidden="true"></i>
+                <span>Filter &amp; Sort Vehicles</span>
+              </button>
+            </div>
+
+            <!-- Desktop Quick Reset Button -->
+            <div class="col-12 col-lg-4 d-none d-lg-flex justify-content-end">
+              <button type="button" class="btn-an-outline" id="clearFiltersBtn">
+                <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>
+                Clear All Filters
+              </button>
+            </div>
+          </div>
+
+          <!-- Collapsible Filter Controls on Mobile / Always Open on Tablet & Desktop -->
+          <div class="an-filter-collapsible" id="filterCollapsibleArea">
+            <div class="an-filter-grid-secondary">
+              <div>
+                <label for="filterCategory" class="an-form-label">Vehicle Category</label>
+                <select id="filterCategory" class="an-select">
+                  <option value="all">All Categories</option>
+                  <option value="Sedan">Sedan</option>
+                  <option value="SUV">SUV</option>
+                  <option value="Hatchback">Hatchback</option>
+                  <option value="Coupe">Coupe</option>
+                  <option value="Electric">Electric</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="filterFuel" class="an-form-label">Fuel Type</label>
+                <select id="filterFuel" class="an-select">
+                  <option value="all">All Fuel Types</option>
+                  <option value="Petrol">Petrol</option>
+                  <option value="Diesel">Diesel</option>
+                  <option value="Hybrid">Hybrid</option>
+                  <option value="Electric">Electric</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="filterTransmission" class="an-form-label">Transmission</label>
+                <select id="filterTransmission" class="an-select">
+                  <option value="all">All Transmissions</option>
+                  <option value="Automatic">Automatic</option>
+                  <option value="Manual">Manual</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="filterYear" class="an-form-label">Model Year</label>
+                <select id="filterYear" class="an-select">
+                  <option value="all">All Model Years</option>
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                </select>
+              </div>
+
+              <div class="d-grid d-lg-none">
+                <button type="button" class="btn-an-outline" onclick="document.getElementById('clearFiltersBtn').click()">
+                  Clear Filters
+                </button>
+              </div>
+            </div>
+
+            <!-- Price Range Row -->
+            <div class="row g-2 mt-2 pt-2 border-top align-items-center">
+              <div class="col-6 col-sm-4 col-md-3">
+                <label for="filterMinPrice" class="an-form-label">Minimum Price ($)</label>
+                <input
+                  type="number"
+                  id="filterMinPrice"
+                  class="an-input"
+                  placeholder="Min e.g. 40000"
+                  min="0"
+                  step="5000"
+                >
+              </div>
+              <div class="col-6 col-sm-4 col-md-3">
+                <label for="filterMaxPrice" class="an-form-label">Maximum Price ($)</label>
+                <input
+                  type="number"
+                  id="filterMaxPrice"
+                  class="an-input"
+                  placeholder="Max e.g. 200000"
+                  min="0"
+                  step="5000"
+                >
+              </div>
+              <div class="col-12 col-sm-4 col-md-6 text-md-end">
+                <span class="small text-muted">
+                  <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
+                  Click the heart icon on any card to save vehicles to your shortlist.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status Bar & Result Count -->
+        <div class="an-inventory-status-bar">
+          <div class="an-results-counter" id="inventoryResultsCount" aria-live="polite">
+            Showing <strong>8</strong> of <strong>14</strong> matching vehicles
+          </div>
+          <div class="small text-muted">
+            All vehicles include a 150-point workshop inspection certificate.
+          </div>
+        </div>
+
+        <!-- Inventory Vehicle Grid -->
+        <div class="an-vehicle-grid" id="inventoryVehiclesGrid" aria-live="polite"></div>
+
+        <!-- Section 6.D: Friendly Empty State -->
+        <div class="an-empty-state" id="inventoryEmptyState" hidden>
+          <div class="an-empty-icon" aria-hidden="true">
+            <i class="bi bi-search"></i>
+          </div>
+          <h2 class="h4 mb-2">No vehicles match your filters.</h2>
+          <p class="mb-4">
+            Try adjusting your price range, clearing a fuel or transmission filter, or searching for a broader manufacturer name.
+          </p>
+          <button type="button" class="btn-an-primary" id="emptyStateClearBtn">
+            Clear Filters <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Section 6.E: Load More Pagination Control -->
+        <div class="text-center mt-5" id="loadMoreWrapper">
+          <p class="small text-muted mb-3" id="loadMoreStatus">
+            Displaying 8 of 14 vehicles in our curated inventory.
+          </p>
+          <button type="button" class="btn-an-secondary px-4" id="loadMoreBtn">
+            Load More Vehicles (6 remaining) <i class="bi bi-arrow-down-short" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         CERTIFIED WORKSHOP & SHOWROOM QUALITY STRIP
+         ================================================================== -->
+    <section class="an-section an-section-soft border-top" aria-labelledby="quality-assurance-heading">
+      <div class="an-container">
+        <div class="row align-items-center g-4 mb-4" data-reveal>
+          <div class="col-12 col-lg-7">
+            <span class="an-eyebrow">AUTONOVA TECHNICAL ASSURANCE</span>
+            <h2 class="an-section-title mb-2" id="quality-assurance-heading">Every Vehicle Inspected Inside &amp; Out.</h2>
+            <p class="an-section-subtitle">
+              Before a vehicle is listed on our marketplace, our master technicians verify undercarriage integrity, braking systems, and diagnostic electronics on our hydraulic lifts.
+            </p>
+          </div>
+          <div class="col-12 col-lg-5 text-lg-end">
+            <a href="contact.html" class="btn-an-primary">
+              Request an Inspection Report <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="row g-4" data-reveal>
+          <div class="col-12 col-md-4">
+            <div class="an-craft-card">
+              <div class="an-craft-media">
+                <img
+                  src="assets/images/34.jpg"
+                  alt="Technician in navy uniform and white gloves inspecting a vehicle undercarriage on a hydraulic lift"
+                  loading="lazy"
+                  width="680"
+                  height="450"
+                >
+              </div>
+              <div class="an-craft-body">
+                <h3 class="an-craft-title">Undercarriage &amp; Chassis Audit</h3>
+                <p class="small mb-0">
+                  Full lift examination of suspension arms, exhaust routing, subframes, and EV battery enclosures.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="an-craft-card">
+              <div class="an-craft-media">
+                <img
+                  src="assets/images/36.jpg"
+                  alt="Three service technicians inspecting wheels and brakes on a white hatchback raised on a lift"
+                  loading="lazy"
+                  width="680"
+                  height="450"
+                >
+              </div>
+              <div class="an-craft-body">
+                <h3 class="an-craft-title">Wheel, Rotor &amp; Tire Servicing</h3>
+                <p class="small mb-0">
+                  Precision measurement of brake pad thickness, rotor runout, wheel balance, and tire load ratings.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="an-craft-card">
+              <div class="an-craft-media">
+                <img
+                  src="assets/images/8.jpg"
+                  alt="High-angle sunlit overview of the AutoNova showroom floor featuring Mercedes-Maybach and executive sedans"
+                  loading="lazy"
+                  width="680"
+                  height="450"
+                >
+              </div>
+              <div class="an-craft-body">
+                <h3 class="an-craft-title">Climate-Controlled Presentation</h3>
+                <p class="small mb-0">
+                  Prepared and displayed indoors in our sunlit showroom, ready for immediate inspection and test drives.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       GLOBAL FOOTER
+       ==================================================================== -->
+  <footer class="an-footer" role="contentinfo">
+    <div class="an-container">
+      <div class="row g-4">
+        <div class="col-12 col-lg-4">
+          <a href="index.html" class="an-brand an-footer-brand mb-3" aria-label="AutoNova Home">
+            <svg class="an-brand-car-svg" viewBox="0 0 92 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 22.5C10 20.5 16 14.5 25 10.5C34 6.5 45 6 55 11.5C60 14.2 64 15.2 72 16C79 16.7 85 18.8 89 22C84 20.4 78 19.3 71 19C62 18.6 56 16.5 51 13.5C43 8.8 34 9.2 25 13.5C17 17.3 11 21.2 4 22.5Z" fill="#E63946"/>
+              <path d="M9 24.5C13 21.5 18 20 23.5 20C29 20 33.5 22 36 25H56C58.5 22 63 20 68.5 20C74 20 79 21.5 83 24.5" stroke="#E63946" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M26 16.5C35 14.5 47 15 60 18.5" stroke="#E63946" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="23.5" cy="25.5" r="3.2" fill="#E63946"/>
+              <circle cx="68.5" cy="25.5" r="3.2" fill="#E63946"/>
+            </svg>
+            <span><span class="an-brand-auto">Auto</span><span class="an-brand-accent">Nova</span></span>
+          </a>
+          <p class="small mb-3" style="color: rgba(255,255,255,0.72); max-width: 36ch;">
+            AutoNova is a modern automotive discovery and dealership platform dedicated to transparent specifications, verified vehicles, and personalised test drives.
+          </p>
+          <div class="an-social-row" aria-label="AutoNova Social Links">
+            <a href="contact.html" class="an-social-link" aria-label="AutoNova on Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="contact.html" class="an-social-link" aria-label="AutoNova on YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+            <a href="contact.html" class="an-social-link" aria-label="AutoNova on LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+            <a href="contact.html" class="an-social-link" aria-label="Contact AutoNova via Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <h3 class="an-footer-heading">Navigation</h3>
+          <ul class="an-footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="inventory.html">Vehicle Inventory</a></li>
+            <li><a href="vehicle-details.html">Vehicle Details</a></li>
+            <li><a href="contact.html">Contact &amp; Test Drive</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <h3 class="an-footer-heading">Vehicle Discovery</h3>
+          <ul class="an-footer-links">
+            <li><a href="inventory.html?category=Sedan">Executive Sedans</a></li>
+            <li><a href="inventory.html?category=SUV">Luxury &amp; Family SUVs</a></li>
+            <li><a href="inventory.html?category=Coupe">Performance Coupes</a></li>
+            <li><a href="inventory.html?category=Electric">Electric Mobility</a></li>
+            <li><a href="inventory.html?category=Hatchback">Sport Hatchbacks</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3">
+          <h3 class="an-footer-heading">Showroom Contact (Demo)</h3>
+          <ul class="an-footer-links">
+            <li>
+              <i class="bi bi-geo-alt text-accent-red me-2" aria-hidden="true"></i>
+              <span>450 Meridian Automotive Blvd (Sample Dealership Address)</span>
+            </li>
+            <li>
+              <i class="bi bi-telephone text-accent-red me-2" aria-hidden="true"></i>
+              <a href="tel:+18005550199">+1 (800) 555-0199 (Demo Line)</a>
+            </li>
+            <li>
+              <i class="bi bi-envelope text-accent-red me-2" aria-hidden="true"></i>
+              <a href="mailto:concierge@autonova-demo.example">concierge@autonova-demo.example</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="an-footer-bottom">
+        <span>&copy; 2026 AutoNova Automotive Platform. All rights reserved.</span>
+        <span>Demonstration dealership portfolio — sample pricing &amp; specifications.</span>
+        <button type="button" class="an-footer-back-to-top" data-scroll-top aria-label="Scroll back to top of page">
+          <i class="bi bi-arrow-up" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared AutoNova JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+

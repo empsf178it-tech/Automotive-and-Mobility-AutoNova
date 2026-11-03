@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoNova | Premium Automotive Discovery &amp; Dealership Platform</title>
+  <meta name="description" content="Explore curated luxury, performance, and electric vehicles at AutoNova. Compare verified specifications, view detailed photography, and book a personalised test drive.">
+
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS & Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Shared AutoNova Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- AutoNova Sports-Coupe Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="alternate icon" href="assets/images/favicon.svg">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ====================================================================
+       GLOBAL HEADER & NAVIGATION
+       ==================================================================== -->
+  <header class="an-header" role="banner">
+    <div class="an-container an-header-inner">
+      <!-- Left: Sleek Red Car Roofline Silhouette SVG + AutoNova Wordmark -->
+      <a href="index.html" class="an-brand" aria-label="AutoNova Home">
+        <svg class="an-brand-car-svg" viewBox="0 0 92 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M4 22.5C10 20.5 16 14.5 25 10.5C34 6.5 45 6 55 11.5C60 14.2 64 15.2 72 16C79 16.7 85 18.8 89 22C84 20.4 78 19.3 71 19C62 18.6 56 16.5 51 13.5C43 8.8 34 9.2 25 13.5C17 17.3 11 21.2 4 22.5Z" fill="#E63946"/>
+          <path d="M9 24.5C13 21.5 18 20 23.5 20C29 20 33.5 22 36 25H56C58.5 22 63 20 68.5 20C74 20 79 21.5 83 24.5" stroke="#E63946" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M26 16.5C35 14.5 47 15 60 18.5" stroke="#E63946" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="23.5" cy="25.5" r="3.2" fill="#E63946"/>
+          <circle cx="68.5" cy="25.5" r="3.2" fill="#E63946"/>
+        </svg>
+        <span><span class="an-brand-auto">Auto</span><span class="an-brand-accent">Nova</span></span>
+      </a>
+
+      <!-- Center: Desktop Navigation -->
+      <nav aria-label="Primary Navigation">
+        <ul class="an-nav-list">
+          <li><a href="index.html" class="an-nav-link active" aria-current="page">Home</a></li>
+          <li><a href="inventory.html" class="an-nav-link">Inventory</a></li>
+          <li><a href="vehicle-details.html" class="an-nav-link">Vehicle Details</a></li>
+          <li><a href="contact.html" class="an-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right: Search, Favourites Badge & Steering-Wheel Primary CTA -->
+      <div class="an-header-actions">
+        <button
+          type="button"
+          class="an-search-trigger"
+          id="headerSearchToggle"
+          aria-label="Open vehicle search"
+          aria-expanded="false"
+          aria-controls="headerSearchBar"
+        >
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+
+        <a
+          href="inventory.html"
+          class="an-header-fav-btn"
+          aria-label="View shortlisted vehicles (3 saved)"
+          title="Shortlisted Vehicles"
+        >
+          <i class="bi bi-heart" aria-hidden="true"></i>
+          <span class="an-header-fav-badge" id="headerFavCountBadge">3</span>
+        </a>
+
+        <a href="contact.html#contact-form-section" class="btn-an-primary an-header-cta" style="border-radius: 10px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <circle cx="12" cy="12" r="2.5"/>
+            <path d="M12 14.5V21"/>
+            <path d="M9.8 10.8L3.6 8.5"/>
+            <path d="M14.2 10.8L20.4 8.5"/>
+          </svg>
+          <span>Book a Test Drive</span>
+        </a>
+
+        <button
+          type="button"
+          class="an-menu-toggle"
+          id="mobileMenuToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobileNavPanel"
+        >
+          <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Compact Header Search Bar -->
+    <div class="an-header-search-bar" id="headerSearchBar" role="region" aria-label="Quick Inventory Search">
+      <div class="an-container">
+        <form action="inventory.html" method="get" class="an-header-search-form">
+          <label for="headerSearchInput" class="visually-hidden">Search by manufacturer, model, or category</label>
+          <input
+            type="search"
+            id="headerSearchInput"
+            name="q"
+            class="an-header-search-input"
+            placeholder="Search Hyundai Tucson, Mercedes-Benz, McLaren, Porsche Taycan, BMW M4..."
+          >
+          <button type="submit" class="btn-an-primary">
+            Search <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Mobile & Tablet Navigation Panel (Includes Search & Favourites) -->
+    <div class="an-mobile-nav" id="mobileNavPanel" aria-label="Mobile Navigation">
+      <form action="inventory.html" method="get" class="an-mobile-search-form">
+        <label for="mobileSearchInput" class="visually-hidden">Search vehicles by manufacturer or model</label>
+        <input
+          type="search"
+          id="mobileSearchInput"
+          name="q"
+          class="an-mobile-search-input"
+          placeholder="Search Tucson, McLaren, Taycan..."
+        >
+        <button type="submit" class="btn-an-primary py-2 px-3" aria-label="Search Inventory">
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+      </form>
+
+      <ul class="an-mobile-nav-list">
+        <li>
+          <a href="index.html" class="an-mobile-nav-link active" aria-current="page">
+            <span>Home</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="inventory.html" class="an-mobile-nav-link">
+            <span>Inventory</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="vehicle-details.html" class="an-mobile-nav-link">
+            <span>Vehicle Details</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html" class="an-mobile-nav-link">
+            <span>Contact</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+
+      <a href="inventory.html" class="an-mobile-fav-row" aria-label="View shortlisted vehicles">
+        <span><i class="bi bi-heart-fill text-accent-red me-2" aria-hidden="true"></i>Shortlisted Vehicles</span>
+        <span class="an-header-fav-badge">3</span>
+      </a>
+
+      <div class="d-grid gap-2">
+        <a href="contact.html#contact-form-section" class="btn-an-primary w-100">
+          Book a Test Drive <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a href="inventory.html" class="btn-an-outline w-100">
+          Browse Full Inventory
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ==================================================================
+         SECTION 5.A, 5.B & 5.C — EXACT REFERENCE WEB-VIEWPORT HERO & TRUST BAR
+         ================================================================== -->
+    <section class="an-hero-snip-stage" aria-label="AutoNova Featured Showcase">
+      <!-- Full-Bleed Right Showroom Image + Left White Gradient Mask -->
+      <div class="an-hero-bg-layer">
+        <img
+          src="assets/images/hero-tucson.jpg"
+          alt="2025 Hyundai Tucson in Fiery Red Pearl parked in a curved glass architectural showroom"
+          class="an-hero-bg-img"
+          id="heroMainVehicleImg"
+          width="1600"
+          height="900"
+        >
+        <div class="an-hero-spotlight" aria-hidden="true"></div>
+        <div class="an-hero-headlight-beam" aria-hidden="true"></div>
+        <div class="an-hero-bg-fade" aria-hidden="true"></div>
+      </div>
+
+      <!-- Main Split Row: Left Typography + Right Vertical Featured Card -->
+      <div class="an-hero-main-wrap">
+        <div class="an-container">
+          <div class="an-hero-main-row">
+            <!-- Left Column -->
+            <div class="an-snip-left">
+              <span class="an-snip-eyebrow hero-anim-eyebrow">THE NEXT DRIVE STARTS HERE</span>
+              <h1 class="an-snip-title hero-anim-title">
+                Find Your Next<br>
+                <span class="text-accent-red">Extraordinary</span> Drive.
+              </h1>
+              <p class="an-snip-lead hero-anim-lead">
+                Discover exceptional vehicles, explore the details,<br class="d-none d-md-inline">
+                and find the car that fits your journey.
+              </p>
+
+              <div class="an-snip-actions hero-anim-cta">
+                <a href="inventory.html" class="btn-an-primary an-snip-btn-primary">
+                  Explore Inventory <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+                <a href="contact.html#contact-form-section" class="btn-an-outline an-snip-btn-secondary">
+                  <i class="bi bi-calendar3 me-1" aria-hidden="true"></i> Book a Test Drive
+                </a>
+              </div>
+
+              <!-- Three Credibility Indicators with Vertical Dividers -->
+              <div class="an-snip-cred-row hero-anim-cred" aria-label="AutoNova Credibility Guarantees">
+                <div class="an-snip-cred-item">
+                  <i class="bi bi-shield-check an-snip-cred-icon" aria-hidden="true"></i>
+                  <div>
+                    <span class="an-snip-cred-title">Verified Vehicles</span>
+                    <span class="an-snip-cred-sub">150+ point check</span>
+                  </div>
+                </div>
+                <div class="an-snip-cred-item">
+                  <i class="bi bi-layers an-snip-cred-icon" aria-hidden="true"></i>
+                  <div>
+                    <span class="an-snip-cred-title">Transparent</span>
+                    <span class="an-snip-cred-sub">Pricing</span>
+                  </div>
+                </div>
+                <div class="an-snip-cred-item">
+                  <i class="bi bi-headset an-snip-cred-icon" aria-hidden="true"></i>
+                  <div>
+                    <span class="an-snip-cred-title">Personalised</span>
+                    <span class="an-snip-cred-sub">Assistance</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Vertical Frosted Featured Vehicle Card -->
+            <div class="an-snip-right-col hero-anim-card">
+              <div class="an-snip-float-card">
+                <span class="an-snip-featured-pill">FEATURED</span>
+                <h2 class="an-snip-card-title" id="heroCardTitle">Hyundai Tucson</h2>
+                <span class="an-snip-card-sub" id="heroCardBadge">2025 • SUV</span>
+                <span class="an-snip-card-price" id="heroCardPrice">₹28.99 Lakh*</span>
+
+                <ul class="an-snip-spec-list" aria-label="Featured vehicle specifications">
+                  <li>
+                    <i class="bi bi-cpu" aria-hidden="true"></i>
+                    <span id="heroSpecEngine">2.0L Petrol</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-gear" aria-hidden="true"></i>
+                    <span id="heroSpecTrans">Automatic</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-person" aria-hidden="true"></i>
+                    <span id="heroSpecSeats">5 Seater</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-fuel-pump" aria-hidden="true"></i>
+                    <span id="heroSpecFuel">14.5 km/l</span>
+                  </li>
+                </ul>
+
+                <a href="vehicle-details.html?id=hyundai-tucson-2025" class="btn-an-primary an-snip-card-btn" id="heroCardLink">
+                  View Details <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Container: Floor Carousel Dots + Arrows & Floating White 4-Column Trust Bar -->
+      <div class="an-container">
+        <div class="an-snip-controls-bar">
+          <div class="an-snip-dots" role="group" aria-label="Featured vehicle slides">
+            <button type="button" class="an-snip-dot active" data-hero-slide="0" aria-label="Slide 1: Hyundai Tucson" aria-pressed="true"></button>
+            <button type="button" class="an-snip-dot" data-hero-slide="1" aria-label="Slide 2: McLaren 720S" aria-pressed="false"></button>
+            <button type="button" class="an-snip-dot" data-hero-slide="2" aria-label="Slide 3: Porsche Taycan" aria-pressed="false"></button>
+          </div>
+          <div class="an-snip-arrows">
+            <button type="button" class="an-snip-arrow-btn" id="heroPrevSlide" aria-label="Previous hero vehicle">
+              <i class="bi bi-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="an-snip-arrow-btn" id="heroNextSlide" aria-label="Next hero vehicle">
+              <i class="bi bi-chevron-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="an-snip-trust-card" aria-label="Brand Trust Highlights">
+          <div class="an-snip-trust-grid">
+            <div class="an-snip-trust-item">
+              <i class="bi bi-car-front an-snip-trust-icon" aria-hidden="true"></i>
+              <div>
+                <span class="an-snip-trust-title">Wide Vehicle Range</span>
+                <span class="an-snip-trust-sub">SUVs, Sedans, EVs &amp; More</span>
+              </div>
+            </div>
+            <div class="an-snip-trust-item">
+              <i class="bi bi-lightning-charge an-snip-trust-icon" aria-hidden="true"></i>
+              <div>
+                <span class="an-snip-trust-title">Electric &amp; Hybrid Options</span>
+                <span class="an-snip-trust-sub">A Greener Tomorrow</span>
+              </div>
+            </div>
+            <div class="an-snip-trust-item">
+              <i class="bi bi-wallet2 an-snip-trust-icon" aria-hidden="true"></i>
+              <div>
+                <span class="an-snip-trust-title">Finance Made Easy</span>
+                <span class="an-snip-trust-sub">Flexible &amp; Transparent</span>
+              </div>
+            </div>
+            <div class="an-snip-trust-item">
+              <i class="bi bi-geo-alt an-snip-trust-icon" aria-hidden="true"></i>
+              <div>
+                <span class="an-snip-trust-title">Trusted Dealership</span>
+                <span class="an-snip-trust-sub">Sales, Service &amp; Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         LUXURY AUTOMOTIVE BRAND MARQUEE TICKER (Option A Animation)
+         ================================================================== -->
+    <div class="an-brand-marquee-section" aria-label="Curated Luxury Automotive Marques">
+      <div class="an-marquee-track">
+        <div class="an-marquee-content">
+          <span class="an-marquee-item"><i class="bi bi-shield-shaded" aria-hidden="true"></i> PORSCHE</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-speedometer2" aria-hidden="true"></i> McLAREN</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-trophy" aria-hidden="true"></i> FERRARI</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-star-fill" aria-hidden="true"></i> MERCEDES-BENZ</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-lightning-charge-fill" aria-hidden="true"></i> BMW M PERFORMANCE</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-circle-square" aria-hidden="true"></i> AUDI SPORT</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-ev-front" aria-hidden="true"></i> HYUNDAI IONIQ</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-asterisk" aria-hidden="true"></i> POLESTAR</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-compass" aria-hidden="true"></i> RANGE ROVER</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+        </div>
+        <div class="an-marquee-content" aria-hidden="true">
+          <span class="an-marquee-item"><i class="bi bi-shield-shaded" aria-hidden="true"></i> PORSCHE</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-speedometer2" aria-hidden="true"></i> McLAREN</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-trophy" aria-hidden="true"></i> FERRARI</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-star-fill" aria-hidden="true"></i> MERCEDES-BENZ</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-lightning-charge-fill" aria-hidden="true"></i> BMW M PERFORMANCE</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-circle-square" aria-hidden="true"></i> AUDI SPORT</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-ev-front" aria-hidden="true"></i> HYUNDAI IONIQ</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-asterisk" aria-hidden="true"></i> POLESTAR</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+          <span class="an-marquee-item"><i class="bi bi-compass" aria-hidden="true"></i> RANGE ROVER</span>
+          <span class="an-marquee-dot" aria-hidden="true">•</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================================================================
+         SECTION 5.D — FEATURED VEHICLES + INTERACTIVE CATEGORY TABS
+         ================================================================== -->
+    <section class="an-section" aria-labelledby="featured-vehicles-heading">
+      <div class="an-container">
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4" data-reveal>
+          <div>
+            <span class="an-eyebrow">STANDOUT INVENTORY</span>
+            <h2 class="an-section-title" id="featured-vehicles-heading">Find the Car That Feels Like Yours.</h2>
+            <p class="an-section-subtitle">
+              Explore standout vehicles selected for performance, comfort, and everyday practicality.
+            </p>
+          </div>
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <div class="an-home-filter-tabs" role="tablist" aria-label="Filter standout vehicles">
+              <button type="button" class="an-home-tab-btn active" data-home-filter="featured" role="tab" aria-selected="true">
+                Standout (4)
+              </button>
+              <button type="button" class="an-home-tab-btn" data-home-filter="Coupe" role="tab" aria-selected="false">
+                Coupes (4)
+              </button>
+              <button type="button" class="an-home-tab-btn" data-home-filter="Sedan" role="tab" aria-selected="false">
+                Sedans (3)
+              </button>
+              <button type="button" class="an-home-tab-btn" data-home-filter="Electric" role="tab" aria-selected="false">
+                Electric (6)
+              </button>
+            </div>
+            <a href="inventory.html" class="btn-an-outline">
+              All 14 Vehicles <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Populated by assets/js/main.js from shared AUTONOVA_VEHICLES dataset -->
+        <div class="an-vehicle-grid" id="featuredVehiclesGrid" aria-live="polite"></div>
+
+        <!-- Showroom Architectural Gallery Strip -->
+        <div class="mt-5 pt-4 border-top" data-reveal>
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+            <div>
+              <span class="small fw-bold text-uppercase text-accent-red" style="letter-spacing: 0.08em;">Inside AutoNova</span>
+              <h3 class="h5 mb-0 mt-1">Explore Our Multi-Brand Architectural Showrooms</h3>
+            </div>
+            <a href="contact.html" class="small fw-semibold text-dark">
+              Plan a Showroom Visit <i class="bi bi-arrow-right text-accent-red ms-1" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="an-showroom-bento">
+            <div class="an-bento-item">
+              <img src="assets/images/1.jpg" alt="AutoNova sunlit glass-walled executive sedan showroom aisle" loading="lazy" width="600" height="400">
+              <div class="an-bento-overlay">
+                <h4 class="an-bento-title">Executive Glass Atrium</h4>
+                <p class="an-bento-sub">Flagship Sedans &amp; Grand Tourers</p>
+              </div>
+            </div>
+            <div class="an-bento-item">
+              <img src="assets/images/5.jpg" alt="Multi-brand exotic gallery featuring Mercedes-AMG, Maserati, and Audi R8" loading="lazy" width="600" height="400">
+              <div class="an-bento-overlay">
+                <h4 class="an-bento-title">Multi-Brand Exotic Hall</h4>
+                <p class="an-bento-sub">Curated European Performance</p>
+              </div>
+            </div>
+            <div class="an-bento-item">
+              <img src="assets/images/6.jpg" alt="VIP customer lounge overlooking BMW 8 Series and 7 Series flagship display" loading="lazy" width="600" height="400">
+              <div class="an-bento-overlay">
+                <h4 class="an-bento-title">Private Client Lounge</h4>
+                <p class="an-bento-sub">1-on-1 Specification &amp; Concierge</p>
+              </div>
+            </div>
+            <div class="an-bento-item">
+              <img src="assets/images/9.jpg" alt="Minimalist white collector supercar vault displaying exotic sports coupes" loading="lazy" width="600" height="400">
+              <div class="an-bento-overlay">
+                <h4 class="an-bento-title">Collector Supercar Vault</h4>
+                <p class="an-bento-sub">Limited-Production Icons</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 5.E — VEHICLE DISCOVERY FEATURE (THREE DISTINCT COMPOSITIONS)
+         ================================================================== -->
+    <section class="an-section an-section-soft" aria-labelledby="discovery-heading">
+      <div class="an-container">
+        <div class="mb-5" data-reveal>
+          <span class="an-eyebrow">ENGINEERED FOR EVERY JOURNEY</span>
+          <h2 class="an-section-title" id="discovery-heading">Your Next Car, Without the Guesswork.</h2>
+          <p class="an-section-subtitle">
+            Every vehicle in the AutoNova showroom is documented inside and out—from track-honed dynamics and handcrafted cabins to next-generation 800-volt electric mobility.
+          </p>
+        </div>
+
+        <div class="an-discovery-stack">
+          <!-- Feature Block 1: Performance and Driving Experience -->
+          <article class="an-discovery-block" data-reveal>
+            <div class="an-discovery-grid-1">
+              <div>
+                <div class="an-collage-primary">
+                  <img
+                    src="assets/images/14.jpg"
+                    alt="Bugatti Bolide carbon-fibre track hypercar in French Racing Blue under studio lighting"
+                    loading="lazy"
+                    width="805"
+                    height="537"
+                  >
+                  <span class="an-img-caption-pill">Aerodynamic &amp; Motorsport Engineering</span>
+                </div>
+                <div class="an-collage-subgrid">
+                  <div class="an-collage-subitem">
+                    <img
+                      src="assets/images/25.jpg"
+                      alt="Porsche digital instrument cluster displaying live tire pressure in bar and G-force telemetry"
+                      loading="lazy"
+                      width="600"
+                      height="400"
+                    >
+                    <span class="an-img-caption-pill">Digital Telemetry</span>
+                  </div>
+                  <div class="an-collage-subitem">
+                    <img
+                      src="assets/images/28.jpg"
+                      alt="20-inch multi-spoke AMG forged alloy wheel with Falken tire and perforated brake rotor"
+                      loading="lazy"
+                      width="600"
+                      height="400"
+                    >
+                    <span class="an-img-caption-pill">AMG Forged Braking</span>
+                  </div>
+                  <div class="an-collage-subitem d-none d-sm-block">
+                    <img
+                      src="assets/images/29.jpg"
+                      alt="Porsche 911 Guards Red rear LED taillight and sculpted rear fender detail"
+                      loading="lazy"
+                      width="600"
+                      height="400"
+                    >
+                    <span class="an-img-caption-pill">Sculpted Aero Detail</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <span class="an-eyebrow">01 / PERFORMANCE &amp; DYNAMICS</span>
+                <h3 class="h2 mb-3">Performance and Driving Experience.</h3>
+                <p>
+                  Whether you are drawn to a naturally aspirated V12 collector icon, a twin-turbocharged McLaren carbon monocoque, or a 6-speed manual BMW M coupe, we verify powertrain health, brake rotor tolerances, and chassis geometry before any vehicle enters our showroom.
+                </p>
+                <ul class="an-feature-points">
+                  <li>
+                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                    <span>Documented horsepower, torque, and transmission specifications</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                    <span>Verified tire tread depth, forged wheel condition, and brake caliper servicing</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                    <span>On-board digital telemetry and drive-mode calibration checks</span>
+                  </li>
+                </ul>
+                <a href="inventory.html?category=Coupe" class="btn-an-secondary">
+                  Explore Performance Coupes <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Feature Block 2: Comfort and Everyday Practicality (Reversed Asymmetric Layout) -->
+          <article class="an-discovery-block" data-reveal>
+            <div class="an-discovery-grid-2">
+              <div class="order-2 order-lg-1">
+                <span class="an-eyebrow">02 / CRAFTSMANSHIP &amp; VERIFICATION</span>
+                <h3 class="h2 mb-3">Comfort and Everyday Practicality.</h3>
+                <p>
+                  True luxury is effortless day after day. From diamond-quilted Nappa leather cabins and panoramic glass roofs to our 150-point hydraulic-lift mechanical inspection, every sedan and SUV is prepared for confident daily driving.
+                </p>
+                <ul class="an-feature-points">
+                  <li>
+                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                    <span>First-class cabin materials, multi-zone climate control, and acoustic glazing</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                    <span>150-point workshop inspection covering engine bay, suspension, and undercarriage</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                    <span>Spacious five- and seven-seat configurations for family and executive travel</span>
+                  </li>
+                </ul>
+                <div class="d-flex flex-wrap gap-2">
+                  <a href="inventory.html?category=Sedan" class="btn-an-primary">
+                    Explore Executive Sedans <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                  </a>
+                  <a href="inventory.html?category=SUV" class="btn-an-outline">
+                    Browse Luxury SUVs
+                  </a>
+                </div>
+              </div>
+
+              <div class="order-1 order-lg-2">
+                <div class="an-collage-primary">
+                  <img
+                    src="assets/images/24.jpg"
+                    alt="Luxury SUV interior cabin featuring diamond-quilted leather seats and a full-length panoramic glass sunroof"
+                    loading="lazy"
+                    width="1700"
+                    height="1134"
+                  >
+                  <span class="an-img-caption-pill">Diamond-Quilted Cabin &amp; Panoramic Glass Roof</span>
+                </div>
+                <div class="an-collage-subgrid">
+                  <div class="an-collage-subitem">
+                    <img
+                      src="assets/images/22.jpg"
+                      alt="Cognac Brown quilted Nappa leather interior with dual widescreen displays and turbine air vents"
+                      loading="lazy"
+                      width="600"
+                      height="400"
+                    >
+                    <span class="an-img-caption-pill">Nappa Leather Cockpit</span>
+                  </div>
+                  <div class="an-collage-subitem">
+                    <img
+                      src="assets/images/33.jpg"
+                      alt="Metallic grey luxury sport sedan raised on a hydraulic lift in AutoNova's sunlit service center"
+                      loading="lazy"
+                      width="600"
+                      height="400"
+                    >
+                    <span class="an-img-caption-pill">Hydraulic Lift Check</span>
+                  </div>
+                  <div class="an-collage-subitem d-none d-sm-block">
+                    <img
+                      src="assets/images/35.jpg"
+                      alt="Certified technician in blue uniform and white gloves inspecting an open engine bay with a checklist"
+                      loading="lazy"
+                      width="600"
+                      height="400"
+                    >
+                    <span class="an-img-caption-pill">Engine Verification</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Feature Block 3: Electric and Future-Ready Mobility -->
+          <article class="an-discovery-block" data-reveal>
+            <div class="an-discovery-grid-3">
+              <div>
+                <div class="an-collage-primary">
+                  <img
+                    src="assets/images/15.jpg"
+                    alt="Atlas White Hyundai IONIQ 5 electric crossover parked in front of a red architectural lattice facade"
+                    loading="lazy"
+                    width="1200"
+                    height="800"
+                  >
+                  <span class="an-img-caption-pill">800V E-GMP &amp; Porsche Fast-Charging Fleet</span>
+                </div>
+                <div class="an-collage-subgrid">
+                  <div class="an-collage-subitem">
+                    <img
+                      src="assets/images/16.jpg"
+                      alt="Porsche Taycan 4S in Ice Grey Metallic parked beside a modern digital fast-charging totem"
+                      loading="lazy"
+                      width="600"
+                      height="400"
+                    >
+                    <span class="an-img-caption-pill">Digital Charging Hub</span>
+                  </div>
+                  <div class="an-collage-subitem">
+                    <img
+                      src="assets/images/20.jpg"
+                      alt="Slate grey electric SUV plugged into a solar-canopy fast-charging station"
+                      loading="lazy"
+                      width="600"
+                      height="400"
+                    >
+                    <span class="an-img-caption-pill">Solar Canopy EV Bay</span>
+                  </div>
+                  <div class="an-collage-subitem d-none d-sm-block">
+                    <img
+                      src="assets/images/17.jpg"
+                      alt="2024 Polestar 4 Long Range Dual Motor in Storm Grey Metallic"
+                      loading="lazy"
+                      width="600"
+                      height="400"
+                    >
+                    <span class="an-img-caption-pill">Polestar 4 EV Coupe</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <span class="an-eyebrow">03 / ZERO-EMISSION INNOVATION</span>
+                <h3 class="h2 mb-3">Electric and Future-Ready Mobility.</h3>
+                <p>
+                  Transitioning to electric or hybrid mobility is straightforward with AutoNova. Compare real-world battery capacities, kW peak charging speeds, and intelligent ADAS suites across Porsche Taycan, Polestar 4, Mercedes-Benz EQC, and Hyundai IONIQ models.
+                </p>
+                <ul class="an-feature-points">
+                  <li>
+                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                    <span>Verified battery state-of-health (SoH) and rapid DC charging compatibility</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                    <span>Home wallbox guidance and public IONITY / CCS fast-charging orientation</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                    <span>Full selection of pure Electric and 48V Mild-Hybrid powertrains</span>
+                  </li>
+                </ul>
+                <a href="inventory.html?fuel=Electric" class="btn-an-primary">
+                  Explore Electric Vehicles <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 5.F — DEALERSHIP EXPERIENCE BANNER & SHOWROOM HOSPITALITY
+         ================================================================== -->
+    <section class="an-section" aria-labelledby="experience-banner-heading">
+      <div class="an-container">
+        <div class="an-experience-banner mb-4" data-reveal>
+          <img
+            src="assets/images/2.jpg"
+            alt="AutoNova luxury showroom floor featuring a red AMG GT Coupe and a black E-Class Sedan with a red delivery bow"
+            class="an-experience-bg"
+            loading="lazy"
+            width="1200"
+            height="800"
+          >
+          <div class="an-experience-overlay" aria-hidden="true"></div>
+          <div class="an-experience-content">
+            <span class="an-eyebrow an-eyebrow-dark">THE AUTONOVA SHOWROOM EXPERIENCE</span>
+            <h2 id="experience-banner-heading">Meet Your Next Favourite Drive.</h2>
+            <p>
+              Explore the vehicle in person and experience the difference behind the wheel.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="contact.html#contact-form-section" class="btn-an-primary">
+                Schedule Your Test Drive <i class="bi bi-arrow-right" aria-hidden="true"></i>
+              </a>
+              <a href="vehicle-details.html" class="btn-an-white">
+                Inspect Featured Vehicle
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Showroom, Workshop & Delivery Hospitality Highlights -->
+        <div class="row g-4" data-reveal>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="an-craft-card">
+              <div class="an-craft-media">
+                <img
+                  src="assets/images/39.jpg"
+                  alt="Driver sitting behind the steering wheel speaking with an AutoNova showroom specialist before a test drive"
+                  loading="lazy"
+                  width="680"
+                  height="450"
+                >
+              </div>
+              <div class="an-craft-body">
+                <h3 class="an-craft-title">1-on-1 Cockpit Orientation</h3>
+                <p class="small mb-0">
+                  Our specialists walk you through seat ergonomics, drive modes, and digital cockpit controls before every road session.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="an-craft-card">
+              <div class="an-craft-media">
+                <img
+                  src="assets/images/37.jpg"
+                  alt="Pristine white-tiled AutoNova luxury automotive service and inspection facility with vehicles in service bays"
+                  loading="lazy"
+                  width="680"
+                  height="450"
+                >
+              </div>
+              <div class="an-craft-body">
+                <h3 class="an-craft-title">150-Point Service Facility</h3>
+                <p class="small mb-0">
+                  Review complete multi-point inspection sheets from our climate-controlled diagnostic and lift bays.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="an-craft-card">
+              <div class="an-craft-media">
+                <img
+                  src="assets/images/40.jpg"
+                  alt="Showroom specialist handing over a vehicle key fob to a smiling family beside their new red electric SUV"
+                  loading="lazy"
+                  width="680"
+                  height="450"
+                >
+              </div>
+              <div class="an-craft-body">
+                <h3 class="an-craft-title">Personalised Key Handover</h3>
+                <p class="small mb-0">
+                  Every delivery is prepared in our indoor suite with full walkthroughs for you and your family.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="an-craft-card">
+              <div class="an-craft-media">
+                <img
+                  src="assets/images/42.jpg"
+                  alt="Smiling family posing proudly with a ceremonial key in front of their new white SUV in the showroom"
+                  loading="lazy"
+                  width="680"
+                  height="450"
+                >
+              </div>
+              <div class="an-craft-body">
+                <h3 class="an-craft-title">Celebratory Delivery Moments</h3>
+                <p class="small mb-0">
+                  From first showroom consultation to celebratory handover, we make every milestone memorable.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 5.G — FINAL CONVERSION CTA SECTION
+         ================================================================== -->
+    <section class="an-section an-section-soft border-top" aria-labelledby="final-cta-heading">
+      <div class="an-container text-center" data-reveal>
+        <span class="an-eyebrow">START YOUR JOURNEY</span>
+        <h2 class="an-section-title mx-auto" id="final-cta-heading">Ready to Find Your Next Car?</h2>
+        <p class="an-section-subtitle mx-auto mb-4">
+          Browse our complete multi-brand inventory with live filtering, or speak directly with our showroom team to arrange a private viewing.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="inventory.html" class="btn-an-primary">
+            Explore Inventory <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a href="contact.html" class="btn-an-secondary">
+            Contact Our Team
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       GLOBAL FOOTER
+       ==================================================================== -->
+  <footer class="an-footer" role="contentinfo">
+    <div class="an-container">
+      <div class="row g-4">
+        <!-- Col 1: Brand & Description -->
+        <div class="col-12 col-lg-4">
+          <a href="index.html" class="an-brand an-footer-brand mb-3" aria-label="AutoNova Home">
+            <svg class="an-brand-car-svg" viewBox="0 0 92 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 22.5C10 20.5 16 14.5 25 10.5C34 6.5 45 6 55 11.5C60 14.2 64 15.2 72 16C79 16.7 85 18.8 89 22C84 20.4 78 19.3 71 19C62 18.6 56 16.5 51 13.5C43 8.8 34 9.2 25 13.5C17 17.3 11 21.2 4 22.5Z" fill="#E63946"/>
+              <path d="M9 24.5C13 21.5 18 20 23.5 20C29 20 33.5 22 36 25H56C58.5 22 63 20 68.5 20C74 20 79 21.5 83 24.5" stroke="#E63946" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M26 16.5C35 14.5 47 15 60 18.5" stroke="#E63946" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="23.5" cy="25.5" r="3.2" fill="#E63946"/>
+              <circle cx="68.5" cy="25.5" r="3.2" fill="#E63946"/>
+            </svg>
+            <span><span class="an-brand-auto">Auto</span><span class="an-brand-accent">Nova</span></span>
+          </a>
+          <p class="small mb-3" style="color: rgba(255,255,255,0.72); max-width: 36ch;">
+            AutoNova is a modern automotive discovery and dealership platform dedicated to transparent specifications, verified vehicles, and personalised test drives.
+          </p>
+          <div class="an-social-row" aria-label="AutoNova Social Links">
+            <a href="contact.html" class="an-social-link" aria-label="AutoNova on Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="contact.html" class="an-social-link" aria-label="AutoNova on YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+            <a href="contact.html" class="an-social-link" aria-label="AutoNova on LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+            <a href="contact.html" class="an-social-link" aria-label="Contact AutoNova via Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Main Navigation -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <h3 class="an-footer-heading">Navigation</h3>
+          <ul class="an-footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="inventory.html">Vehicle Inventory</a></li>
+            <li><a href="vehicle-details.html">Vehicle Details</a></li>
+            <li><a href="contact.html">Contact &amp; Test Drive</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Vehicle Discovery -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <h3 class="an-footer-heading">Vehicle Discovery</h3>
+          <ul class="an-footer-links">
+            <li><a href="inventory.html?category=Sedan">Executive Sedans</a></li>
+            <li><a href="inventory.html?category=SUV">Luxury &amp; Family SUVs</a></li>
+            <li><a href="inventory.html?category=Coupe">Performance Coupes</a></li>
+            <li><a href="inventory.html?category=Electric">Electric Mobility</a></li>
+            <li><a href="inventory.html?category=Hatchback">Sport Hatchbacks</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact Information (Sample Demonstration Info) -->
+        <div class="col-12 col-md-4 col-lg-3">
+          <h3 class="an-footer-heading">Showroom Contact (Demo)</h3>
+          <ul class="an-footer-links">
+            <li>
+              <i class="bi bi-geo-alt text-accent-red me-2" aria-hidden="true"></i>
+              <span>450 Meridian Automotive Blvd (Sample Dealership Address)</span>
+            </li>
+            <li>
+              <i class="bi bi-telephone text-accent-red me-2" aria-hidden="true"></i>
+              <a href="tel:+18005550199">+1 (800) 555-0199 (Demo Line)</a>
+            </li>
+            <li>
+              <i class="bi bi-envelope text-accent-red me-2" aria-hidden="true"></i>
+              <a href="mailto:concierge@autonova-demo.example">concierge@autonova-demo.example</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="an-footer-bottom">
+        <span>&copy; 2026 AutoNova Automotive Platform. All rights reserved.</span>
+        <span>Demonstration dealership portfolio — sample pricing &amp; specifications.</span>
+        <button type="button" class="an-footer-back-to-top" data-scroll-top aria-label="Scroll back to top of page">
+          <i class="bi bi-arrow-up" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared AutoNova JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

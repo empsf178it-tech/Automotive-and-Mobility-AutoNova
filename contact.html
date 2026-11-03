@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &amp; Book a Test Drive | AutoNova Automotive Dealership</title>
+  <meta name="description" content="Get in touch with the AutoNova showroom team to schedule a test drive, request vehicle pricing, or arrange a private viewing.">
+
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS & Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Shared AutoNova Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- AutoNova Sports-Coupe Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="alternate icon" href="assets/images/favicon.svg">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ====================================================================
+       GLOBAL HEADER & NAVIGATION
+       ==================================================================== -->
+  <header class="an-header" role="banner">
+    <div class="an-container an-header-inner">
+      <a href="index.html" class="an-brand" aria-label="AutoNova Home">
+        <svg class="an-brand-car-svg" viewBox="0 0 92 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M4 22.5C10 20.5 16 14.5 25 10.5C34 6.5 45 6 55 11.5C60 14.2 64 15.2 72 16C79 16.7 85 18.8 89 22C84 20.4 78 19.3 71 19C62 18.6 56 16.5 51 13.5C43 8.8 34 9.2 25 13.5C17 17.3 11 21.2 4 22.5Z" fill="#E63946"/>
+          <path d="M9 24.5C13 21.5 18 20 23.5 20C29 20 33.5 22 36 25H56C58.5 22 63 20 68.5 20C74 20 79 21.5 83 24.5" stroke="#E63946" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M26 16.5C35 14.5 47 15 60 18.5" stroke="#E63946" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="23.5" cy="25.5" r="3.2" fill="#E63946"/>
+          <circle cx="68.5" cy="25.5" r="3.2" fill="#E63946"/>
+        </svg>
+        <span><span class="an-brand-auto">Auto</span><span class="an-brand-accent">Nova</span></span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="an-nav-list">
+          <li><a href="index.html" class="an-nav-link">Home</a></li>
+          <li><a href="inventory.html" class="an-nav-link">Inventory</a></li>
+          <li><a href="vehicle-details.html" class="an-nav-link">Vehicle Details</a></li>
+          <li><a href="contact.html" class="an-nav-link active" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="an-header-actions">
+        <button
+          type="button"
+          class="an-search-trigger"
+          id="headerSearchToggle"
+          aria-label="Open vehicle search"
+          aria-expanded="false"
+          aria-controls="headerSearchBar"
+        >
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+
+        <a
+          href="inventory.html"
+          class="an-header-fav-btn"
+          aria-label="View shortlisted vehicles"
+          title="Shortlisted Vehicles"
+        >
+          <i class="bi bi-heart" aria-hidden="true"></i>
+          <span class="an-header-fav-badge">3</span>
+        </a>
+
+        <a href="#contact-form-section" class="btn-an-primary an-header-cta" style="border-radius: 10px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <circle cx="12" cy="12" r="2.5"/>
+            <path d="M12 14.5V21"/>
+            <path d="M9.8 10.8L3.6 8.5"/>
+            <path d="M14.2 10.8L20.4 8.5"/>
+          </svg>
+          <span>Book a Test Drive</span>
+        </a>
+
+        <button
+          type="button"
+          class="an-menu-toggle"
+          id="mobileMenuToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobileNavPanel"
+        >
+          <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Compact Header Search Bar -->
+    <div class="an-header-search-bar" id="headerSearchBar" role="region" aria-label="Quick Inventory Search">
+      <div class="an-container">
+        <form action="inventory.html" method="get" class="an-header-search-form">
+          <label for="headerSearchInput" class="visually-hidden">Search by manufacturer, model, or category</label>
+          <input
+            type="search"
+            id="headerSearchInput"
+            name="q"
+            class="an-header-search-input"
+            placeholder="Search Mercedes-Benz, McLaren, Porsche Taycan, Hyundai IONIQ, BMW M4..."
+          >
+          <button type="submit" class="btn-an-primary">
+            Search <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Mobile & Tablet Navigation Panel (Includes Search & Favourites) -->
+    <div class="an-mobile-nav" id="mobileNavPanel" aria-label="Mobile Navigation">
+      <form action="inventory.html" method="get" class="an-mobile-search-form">
+        <label for="mobileSearchInput" class="visually-hidden">Search vehicles by manufacturer or model</label>
+        <input
+          type="search"
+          id="mobileSearchInput"
+          name="q"
+          class="an-mobile-search-input"
+          placeholder="Search Tucson, McLaren, Taycan..."
+        >
+        <button type="submit" class="btn-an-primary py-2 px-3" aria-label="Search Inventory">
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+      </form>
+
+      <ul class="an-mobile-nav-list">
+        <li>
+          <a href="index.html" class="an-mobile-nav-link">
+            <span>Home</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="inventory.html" class="an-mobile-nav-link">
+            <span>Inventory</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="vehicle-details.html" class="an-mobile-nav-link">
+            <span>Vehicle Details</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html" class="an-mobile-nav-link active" aria-current="page">
+            <span>Contact</span>
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+
+      <a href="inventory.html" class="an-mobile-fav-row" aria-label="View shortlisted vehicles">
+        <span><i class="bi bi-heart-fill text-accent-red me-2" aria-hidden="true"></i>Shortlisted Vehicles</span>
+        <span class="an-header-fav-badge">3</span>
+      </a>
+
+      <div class="d-grid gap-2">
+        <a href="#contact-form-section" class="btn-an-primary w-100">
+          Book a Test Drive <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ==================================================================
+         SECTION 8.A — UNIFORM SUBPAGE HERO (CONTACT — 390PX STAGE)
+         ================================================================== -->
+    <section class="an-subpage-hero" aria-labelledby="contact-hero-heading">
+      <div class="an-subpage-hero-bg">
+        <img
+          src="assets/images/41.jpg"
+          alt="AutoNova sales specialist with tablet assisting a customer beside an SUV in the glass-walled showroom"
+          class="an-subpage-hero-bg-img"
+          width="1200"
+          height="900"
+        >
+        <div class="an-subpage-hero-bg-fade" aria-hidden="true"></div>
+      </div>
+
+      <div class="an-container an-subpage-hero-inner">
+        <div class="an-subpage-hero-row">
+          <div class="an-subpage-hero-left">
+            <nav aria-label="Breadcrumb">
+              <ol class="an-breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li aria-hidden="true">/</li>
+                <li class="an-breadcrumb-current" aria-current="page">Contact &amp; Test Drive</li>
+              </ol>
+            </nav>
+            <span class="an-snip-eyebrow hero-anim-eyebrow">WE'RE HERE TO HELP</span>
+            <h1 class="an-subpage-title hero-anim-title" id="contact-hero-heading">
+              Let's Get You <span class="text-accent-red">Behind the Wheel.</span>
+            </h1>
+            <p class="an-subpage-subtitle hero-anim-lead">
+              Whether you're exploring your options or ready for a test drive, our showroom specialists can help you take the next step.
+            </p>
+
+            <div class="an-snip-cred-row hero-anim-cred" aria-label="Showroom Concierge Promises">
+              <div class="an-snip-cred-item">
+                <i class="bi bi-headset an-snip-cred-icon" aria-hidden="true"></i>
+                <div>
+                  <span class="an-snip-cred-title">Direct Advisors</span>
+                  <span class="an-snip-cred-sub">Zero high-pressure</span>
+                </div>
+              </div>
+              <div class="an-snip-cred-item">
+                <i class="bi bi-calendar2-check an-snip-cred-icon" aria-hidden="true"></i>
+                <div>
+                  <span class="an-snip-cred-title">7-Day Test Drives</span>
+                  <span class="an-snip-cred-sub">09:00 AM – 08:00 PM</span>
+                </div>
+              </div>
+              <div class="an-snip-cred-item">
+                <i class="bi bi-geo-alt an-snip-cred-icon" aria-hidden="true"></i>
+                <div>
+                  <span class="an-snip-cred-title">Private Valet Bay</span>
+                  <span class="an-snip-cred-sub">450W EV fast charging</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="an-subpage-hero-right hero-anim-card">
+            <div class="an-subpage-float-card">
+              <span class="an-snip-featured-pill">CONCIERGE DESK</span>
+              <h2 class="an-snip-card-title">Showroom Visit</h2>
+              <span class="an-snip-card-sub">Mon–Sun • 09:00 AM – 08:00 PM</span>
+              <ul class="an-snip-spec-list mt-2 mb-3">
+                <li><i class="bi bi-telephone text-danger" aria-hidden="true"></i> <span>+1 (800) 555-0199</span></li>
+                <li><i class="bi bi-geo-alt text-danger" aria-hidden="true"></i> <span>742 Apex Motorway Blvd</span></li>
+              </ul>
+              <a href="#contact-form-section" class="btn-an-primary an-snip-card-btn">
+                Send an Enquiry <i class="bi bi-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 8.B — FOUR CONTACT INFORMATION BLOCKS & SOCIAL CHANNELS
+         ================================================================== -->
+    <section class="an-section pb-3" aria-label="Dealership Contact Channels">
+      <div class="an-container">
+        <div class="row g-4" data-reveal>
+          <!-- Block 1: Call Our Team -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="an-contact-card">
+              <span class="an-contact-icon" aria-hidden="true">
+                <i class="bi bi-telephone-outbound"></i>
+              </span>
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h2 class="h5 mb-0">Call Our Team</h2>
+                <span class="badge bg-light text-secondary border">Sample Info</span>
+              </div>
+              <p class="small mb-3">
+                Speak directly with a vehicle product specialist regarding availability, specifications, or test-drive scheduling.
+              </p>
+              <a href="tel:+18005550199" class="fw-bold text-dark d-block mb-1" style="font-family: var(--font-heading);">
+                +1 (800) 555-0199
+              </a>
+              <span class="small text-muted d-block">
+                Mon–Sun • 09:00 AM – 08:00 PM
+              </span>
+            </div>
+          </div>
+
+          <!-- Block 2: Email Our Team -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="an-contact-card">
+              <span class="an-contact-icon" aria-hidden="true">
+                <i class="bi bi-envelope-paper"></i>
+              </span>
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h2 class="h5 mb-0">Email Our Team</h2>
+                <span class="badge bg-light text-secondary border">Sample Info</span>
+              </div>
+              <p class="small mb-3">
+                Request detailed specification sheets, 150-point workshop inspection reports, or tailored pricing breakdowns.
+              </p>
+              <a href="mailto:concierge@autonova-demo.example" class="fw-bold text-dark d-block mb-1 text-truncate" style="font-family: var(--font-heading);">
+                concierge@autonova-demo.example
+              </a>
+              <span class="small text-muted d-block">
+                Guaranteed response within 2 showroom hours
+              </span>
+            </div>
+          </div>
+
+          <!-- Block 3: Visit the Showroom -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="an-contact-card">
+              <span class="an-contact-icon" aria-hidden="true">
+                <i class="bi bi-building"></i>
+              </span>
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h2 class="h5 mb-0">Visit Showroom</h2>
+                <span class="badge bg-light text-secondary border">Sample Info</span>
+              </div>
+              <p class="small mb-3">
+                Inspect vehicles side by side in our indoor gallery and experience our dedicated customer delivery suite.
+              </p>
+              <strong class="fw-bold text-dark d-block mb-1" style="font-family: var(--font-heading);">
+                450 Meridian Automotive Blvd
+              </strong>
+              <span class="small text-muted d-block">
+                Private Valet Bay &amp; EV fast chargers on site
+              </span>
+            </div>
+          </div>
+
+          <!-- Block 4: Connect on Social Media -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="an-contact-card">
+              <span class="an-contact-icon" aria-hidden="true">
+                <i class="bi bi-share"></i>
+              </span>
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h2 class="h5 mb-0">Social Media</h2>
+                <span class="badge bg-danger-subtle text-danger border">Official</span>
+              </div>
+              <p class="small mb-2">
+                Follow our channels for new hypercar arrivals, weekly walkarounds, and private delivery highlights.
+              </p>
+              <div class="an-contact-social-pills" aria-label="AutoNova Official Social Channels">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-pill" aria-label="AutoNova on Instagram" title="Instagram">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-pill" aria-label="AutoNova on YouTube" title="YouTube">
+                  <i class="bi bi-youtube" aria-hidden="true"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-pill" aria-label="AutoNova on LinkedIn" title="LinkedIn">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-pill" aria-label="AutoNova on Facebook" title="Facebook">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-pill" aria-label="AutoNova on X (Twitter)" title="X (Twitter)">
+                  <i class="bi bi-twitter-x" aria-hidden="true"></i>
+                </a>
+                <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-pill" aria-label="AutoNova on WhatsApp Concierge" title="WhatsApp Concierge">
+                  <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 8.C — CONTACT & TEST-DRIVE ENQUIRY FORM
+         ================================================================== -->
+    <section class="an-section" id="contact-form-section" aria-labelledby="contact-form-heading">
+      <div class="an-container">
+        <div class="row g-4 g-xl-5 align-items-start">
+          <!-- Left 7 Columns: Contact Form -->
+          <div class="col-12 col-lg-7" data-reveal>
+            <div class="an-form-card">
+              <span class="an-eyebrow">DIRECT ENQUIRY &amp; TEST DRIVE</span>
+              <h2 class="h3 mb-2" id="contact-form-heading">Send Us Your Enquiry</h2>
+              <p class="small text-muted mb-4">
+                Complete the form below to enquire about a specific vehicle, request pricing details, or book a test drive.
+                <strong>Demonstration Note:</strong> This form provides complete client-side validation; connect a backend endpoint for production submission.
+              </p>
+
+              <form id="contactEnquiryForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-12 col-md-6 an-field-group">
+                    <label for="cfFullName" class="an-form-label">Full Name <span class="text-accent-red">*</span></label>
+                    <input
+                      type="text"
+                      id="cfFullName"
+                      class="an-input"
+                      placeholder="e.g., Priya Ramanathan"
+                      required
+                      autocomplete="name"
+                    >
+                    <div class="an-field-error" role="alert">
+                      <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+                      <span>Please enter your full name.</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6 an-field-group">
+                    <label for="cfEmail" class="an-form-label">Email Address <span class="text-accent-red">*</span></label>
+                    <input
+                      type="email"
+                      id="cfEmail"
+                      class="an-input"
+                      placeholder="e.g., priya@example.com"
+                      required
+                      autocomplete="email"
+                    >
+                    <div class="an-field-error" role="alert">
+                      <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+                      <span>Please enter a valid email address.</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6 an-field-group">
+                    <label for="cfPhone" class="an-form-label">Phone Number <span class="text-accent-red">*</span></label>
+                    <input
+                      type="tel"
+                      id="cfPhone"
+                      class="an-input"
+                      placeholder="e.g., +1 (555) 890-1234"
+                      required
+                      autocomplete="tel"
+                    >
+                    <div class="an-field-error" role="alert">
+                      <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+                      <span>Please enter a valid phone number.</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6 an-field-group">
+                    <label for="cfEnquiryType" class="an-form-label">Enquiry Type <span class="text-accent-red">*</span></label>
+                    <select id="cfEnquiryType" class="an-select" required>
+                      <option value="">Select enquiry type...</option>
+                      <option value="Vehicle Enquiry">Vehicle Enquiry</option>
+                      <option value="Test Drive">Test Drive</option>
+                      <option value="Pricing Information">Pricing Information</option>
+                      <option value="General Assistance">General Assistance</option>
+                    </select>
+                    <div class="an-field-error" role="alert">
+                      <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+                      <span>Please select an enquiry type.</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6 an-field-group">
+                    <label for="cfVehicleInterest" class="an-form-label">Vehicle of Interest <span class="text-accent-red">*</span></label>
+                    <select id="cfVehicleInterest" class="an-select" required>
+                      <option value="">Select a vehicle...</option>
+                      <option value="2024 Mercedes-Benz S 580 4MATIC ($126,900)">2024 Mercedes-Benz S 580 4MATIC ($126,900)</option>
+                      <option value="2023 McLaren 720S Performance Coupe ($284,500)">2023 McLaren 720S Performance Coupe ($284,500)</option>
+                      <option value="2024 Porsche Taycan Turbo S ($194,800)">2024 Porsche Taycan Turbo S ($194,800)</option>
+                      <option value="2023 Mercedes-Benz EQC 400 4MATIC ($64,500)">2023 Mercedes-Benz EQC 400 4MATIC ($64,500)</option>
+                      <option value="2024 Hyundai IONIQ 5 Limited AWD ($52,800)">2024 Hyundai IONIQ 5 Limited AWD ($52,800)</option>
+                      <option value="2024 Polestar 4 Long Range Dual Motor ($68,900)">2024 Polestar 4 Long Range Dual Motor ($68,900)</option>
+                      <option value="2024 Mercedes-Benz E 300 d AMG Line ($72,500)">2024 Mercedes-Benz E 300 d AMG Line ($72,500)</option>
+                      <option value="2022 BMW M4 Heritage Edition 6-MT ($78,400)">2022 BMW M4 Heritage Edition 6-MT ($78,400)</option>
+                      <option value="2024 Hyundai IONIQ 6 SE Long Range ($48,200)">2024 Hyundai IONIQ 6 SE Long Range ($48,200)</option>
+                      <option value="2021 McLaren 570S Coupe ($188,500)">2021 McLaren 570S Coupe ($188,500)</option>
+                      <option value="2023 Cupra Leon VZ Hybrid ($41,500)">2023 Cupra Leon VZ Hybrid ($41,500)</option>
+                      <option value="2023 KGM Rexton Ultimate 4WD SUV ($46,900)">2023 KGM Rexton Ultimate 4WD SUV ($46,900)</option>
+                      <option value="2024 Porsche Taycan 4S ($114,500)">2024 Porsche Taycan 4S ($114,500)</option>
+                      <option value="2024 Ferrari Daytona SP3 Icona ($345,000)">2024 Ferrari Daytona SP3 Icona ($345,000)</option>
+                      <option value="General Showroom / Undecided">General Showroom / Comparing Multiple Models</option>
+                    </select>
+                    <div class="an-field-error" role="alert">
+                      <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+                      <span>Please select a vehicle of interest.</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6 an-field-group">
+                    <label for="cfContactMethod" class="an-form-label">Preferred Contact Method</label>
+                    <select id="cfContactMethod" class="an-select">
+                      <option value="Email">Email</option>
+                      <option value="Phone Call">Phone Call</option>
+                      <option value="Text / SMS">Text / SMS</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12 an-field-group">
+                    <label for="cfMessage" class="an-form-label">Your Message <span class="text-accent-red">*</span></label>
+                    <textarea
+                      id="cfMessage"
+                      class="an-input"
+                      rows="4"
+                      placeholder="Tell us about your preferred test-drive date, questions about vehicle specifications, or comparison requests..."
+                      required
+                    ></textarea>
+                    <div class="an-field-error" role="alert">
+                      <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+                      <span>Please enter a message of at least 10 characters.</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 pt-2">
+                    <button type="submit" class="btn-an-primary w-100 py-3" id="cfSubmitBtn">
+                      Submit Enquiry (Demo) <i class="bi bi-send ms-1" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div id="cfFormFeedback" class="an-form-feedback" role="status" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Right 5 Columns: Showroom Hospitality & Handover Visuals -->
+          <div class="col-12 col-lg-5" data-reveal>
+            <div class="d-flex flex-column gap-4">
+              <div class="an-craft-card">
+                <div class="an-craft-media">
+                  <img
+                    src="assets/images/39.jpg"
+                    alt="Customer seated in the driver's seat talking with a showroom specialist before a test drive"
+                    loading="lazy"
+                    width="680"
+                    height="450"
+                  >
+                </div>
+                <div class="an-craft-body">
+                  <span class="an-eyebrow mb-1">WHAT TO EXPECT</span>
+                  <h3 class="h5 mb-2">Unhurried Test-Drive Sessions</h3>
+                  <p class="small mb-0">
+                    When you arrive at AutoNova, your selected vehicle is prepared in our climate-controlled bay so you can explore the cockpit, seating comfort, and road dynamics without pressure.
+                  </p>
+                </div>
+              </div>
+
+              <div class="an-craft-card">
+                <div class="an-craft-media">
+                  <img
+                    src="assets/images/42.jpg"
+                    alt="Proud family celebrating their new white SUV handover with a ceremonial key in the showroom"
+                    loading="lazy"
+                    width="680"
+                    height="450"
+                  >
+                </div>
+                <div class="an-craft-body">
+                  <span class="an-eyebrow mb-1">MEMORABLE HANDOVERS</span>
+                  <h3 class="h5 mb-2">Dedicated Family &amp; Executive Delivery</h3>
+                  <p class="small mb-0">
+                    Every vehicle handover includes a complete walkthrough of digital features, charging cables or service intervals, and transparent documentation.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Official Social Channels Hub Card -->
+              <div class="an-craft-card">
+                <div class="p-4">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <span class="an-contact-icon mb-0" style="width: 44px; height: 44px; font-size: 1.25rem;">
+                      <i class="bi bi-broadcast" aria-hidden="true"></i>
+                    </span>
+                    <div>
+                      <span class="an-eyebrow mb-0">CONNECT WITH AUTONOVA</span>
+                      <h3 class="h5 mb-0">Official Social Media</h3>
+                    </div>
+                  </div>
+                  <p class="small text-muted mb-3">
+                    Follow our verified channels for new hypercar arrivals, weekly showroom walkarounds, VIP test-drive events, and collector showcases.
+                  </p>
+                  <div class="an-social-grid" aria-label="AutoNova Social Network Links">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-btn" aria-label="AutoNova on Instagram">
+                      <i class="bi bi-instagram" aria-hidden="true"></i>
+                      <span>Instagram</span>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-btn" aria-label="AutoNova on YouTube">
+                      <i class="bi bi-youtube" aria-hidden="true"></i>
+                      <span>YouTube</span>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-btn" aria-label="AutoNova on LinkedIn">
+                      <i class="bi bi-linkedin" aria-hidden="true"></i>
+                      <span>LinkedIn</span>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-btn" aria-label="AutoNova on Facebook">
+                      <i class="bi bi-facebook" aria-hidden="true"></i>
+                      <span>Facebook</span>
+                    </a>
+                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-btn" aria-label="AutoNova on X (Twitter)">
+                      <i class="bi bi-twitter-x" aria-hidden="true"></i>
+                      <span>X (Twitter)</span>
+                    </a>
+                    <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="an-contact-social-btn" aria-label="AutoNova on WhatsApp Concierge">
+                      <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                      <span>WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 8.D — TEST-DRIVE PROMOTION BANNER
+         ================================================================== -->
+    <section class="an-section py-2" aria-labelledby="promo-banner-heading">
+      <div class="an-container">
+        <div class="an-experience-banner" data-reveal>
+          <img
+            src="assets/images/3.jpg"
+            alt="AutoNova luxury showroom and customer lounge showcasing white BMW 8 Series, grey 7 Series, and black X7 SUV"
+            class="an-experience-bg"
+            loading="lazy"
+            width="1076"
+            height="718"
+          >
+          <div class="an-experience-overlay" aria-hidden="true"></div>
+          <div class="an-experience-content">
+            <span class="an-eyebrow text-white">CURATED FLEET</span>
+            <h2 id="promo-banner-heading">An Exceptional Drive Starts Here.</h2>
+            <p>
+              Compare performance coupes, executive sedans, versatile SUVs, and 800-volt electric vehicles in our live online inventory.
+            </p>
+            <a href="inventory.html" class="btn-an-primary">
+              Explore Inventory <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 8.E — FREQUENTLY ASKED QUESTIONS (4 ACCESSIBLE ACCORDIONS)
+         ================================================================== -->
+    <section class="an-section" aria-labelledby="faq-section-heading">
+      <div class="an-container">
+        <div class="row g-4 g-lg-5 align-items-start">
+          <div class="col-12 col-lg-4" data-reveal>
+            <span class="an-eyebrow">HELPFUL ANSWERS</span>
+            <h2 class="an-section-title" id="faq-section-heading">Frequently Asked Questions.</h2>
+            <p class="an-section-subtitle">
+              Everything you need to know about exploring our inventory, reviewing specifications, and scheduling a showroom visit.
+            </p>
+          </div>
+
+          <div class="col-12 col-lg-8" data-reveal>
+            <div class="an-accordion" id="contactFaqAccordion">
+              <!-- Question 1 -->
+              <div class="an-accordion-item is-open">
+                <h3 class="mb-0">
+                  <button
+                    type="button"
+                    class="an-accordion-trigger"
+                    aria-expanded="true"
+                    aria-controls="faqPanel1"
+                    id="faqTrigger1"
+                  >
+                    <span>1. How do I book a test drive?</span>
+                    <span class="an-accordion-icon" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                </h3>
+                <div class="an-accordion-panel" id="faqPanel1" role="region" aria-labelledby="faqTrigger1">
+                  You can book a test drive directly on any vehicle's detail page using the Test-Drive Booking Form, or by selecting "Test Drive" in the enquiry form on this page. Choose your preferred date, time slot, and vehicle of interest so our team can have the car ready upon your arrival.
+                </div>
+              </div>
+
+              <!-- Question 2 -->
+              <div class="an-accordion-item">
+                <h3 class="mb-0">
+                  <button
+                    type="button"
+                    class="an-accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="faqPanel2"
+                    id="faqTrigger2"
+                  >
+                    <span>2. Can I compare different vehicles?</span>
+                    <span class="an-accordion-icon" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                </h3>
+                <div class="an-accordion-panel" id="faqPanel2" role="region" aria-labelledby="faqTrigger2" hidden>
+                  Yes. On our Vehicle Inventory page, you can filter vehicles by category (Sedan, SUV, Hatchback, Coupe, Electric), fuel type, transmission, model year, and price range. You can also tap the heart icon on any card to shortlist favourites, or use the quick vehicle switcher bar on the Vehicle Details page to compare specifications side by side.
+                </div>
+              </div>
+
+              <!-- Question 3 -->
+              <div class="an-accordion-item">
+                <h3 class="mb-0">
+                  <button
+                    type="button"
+                    class="an-accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="faqPanel3"
+                    id="faqTrigger3"
+                  >
+                    <span>3. Where can I find vehicle specifications?</span>
+                    <span class="an-accordion-icon" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                </h3>
+                <div class="an-accordion-panel" id="faqPanel3" role="region" aria-labelledby="faqTrigger3" hidden>
+                  Click "View Details" on any vehicle card to open its dedicated Vehicle Details page. There you will find a 10-point overview summary, a 6-angle exterior and interior photo gallery with full-screen lightbox, a structured technical specification table, and a confirmed equipment list.
+                </div>
+              </div>
+
+              <!-- Question 4 -->
+              <div class="an-accordion-item">
+                <h3 class="mb-0">
+                  <button
+                    type="button"
+                    class="an-accordion-trigger"
+                    aria-expanded="false"
+                    aria-controls="faqPanel4"
+                    id="faqTrigger4"
+                  >
+                    <span>4. How do I enquire about a particular car?</span>
+                    <span class="an-accordion-icon" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                </h3>
+                <div class="an-accordion-panel" id="faqPanel4" role="region" aria-labelledby="faqTrigger4" hidden>
+                  Select the specific vehicle from the "Vehicle of Interest" dropdown in the enquiry form above, or click "Enquire About This Vehicle" in the sticky summary panel on the Vehicle Details page. Include any questions about inspection history, specifications, or availability.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       GLOBAL FOOTER
+       ==================================================================== -->
+  <footer class="an-footer" role="contentinfo">
+    <div class="an-container">
+      <div class="row g-4">
+        <div class="col-12 col-lg-4">
+          <a href="index.html" class="an-brand an-footer-brand mb-3" aria-label="AutoNova Home">
+            <svg class="an-brand-car-svg" viewBox="0 0 92 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 22.5C10 20.5 16 14.5 25 10.5C34 6.5 45 6 55 11.5C60 14.2 64 15.2 72 16C79 16.7 85 18.8 89 22C84 20.4 78 19.3 71 19C62 18.6 56 16.5 51 13.5C43 8.8 34 9.2 25 13.5C17 17.3 11 21.2 4 22.5Z" fill="#E63946"/>
+              <path d="M9 24.5C13 21.5 18 20 23.5 20C29 20 33.5 22 36 25H56C58.5 22 63 20 68.5 20C74 20 79 21.5 83 24.5" stroke="#E63946" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M26 16.5C35 14.5 47 15 60 18.5" stroke="#E63946" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="23.5" cy="25.5" r="3.2" fill="#E63946"/>
+              <circle cx="68.5" cy="25.5" r="3.2" fill="#E63946"/>
+            </svg>
+            <span><span class="an-brand-auto">Auto</span><span class="an-brand-accent">Nova</span></span>
+          </a>
+          <p class="small mb-3" style="color: rgba(255,255,255,0.72); max-width: 36ch;">
+            AutoNova is a modern automotive discovery and dealership platform dedicated to transparent specifications, verified vehicles, and personalised test drives.
+          </p>
+          <div class="an-social-row" aria-label="AutoNova Social Links">
+            <a href="contact.html" class="an-social-link" aria-label="AutoNova on Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="contact.html" class="an-social-link" aria-label="AutoNova on YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+            <a href="contact.html" class="an-social-link" aria-label="AutoNova on LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+            <a href="contact.html" class="an-social-link" aria-label="Contact AutoNova via Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <h3 class="an-footer-heading">Navigation</h3>
+          <ul class="an-footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="inventory.html">Vehicle Inventory</a></li>
+            <li><a href="vehicle-details.html">Vehicle Details</a></li>
+            <li><a href="contact.html">Contact &amp; Test Drive</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+          <h3 class="an-footer-heading">Vehicle Discovery</h3>
+          <ul class="an-footer-links">
+            <li><a href="inventory.html?category=Sedan">Executive Sedans</a></li>
+            <li><a href="inventory.html?category=SUV">Luxury &amp; Family SUVs</a></li>
+            <li><a href="inventory.html?category=Coupe">Performance Coupes</a></li>
+            <li><a href="inventory.html?category=Electric">Electric Mobility</a></li>
+            <li><a href="inventory.html?category=Hatchback">Sport Hatchbacks</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3">
+          <h3 class="an-footer-heading">Showroom Contact (Demo)</h3>
+          <ul class="an-footer-links">
+            <li>
+              <i class="bi bi-geo-alt text-accent-red me-2" aria-hidden="true"></i>
+              <span>450 Meridian Automotive Blvd (Sample Dealership Address)</span>
+            </li>
+            <li>
+              <i class="bi bi-telephone text-accent-red me-2" aria-hidden="true"></i>
+              <a href="tel:+18005550199">+1 (800) 555-0199 (Demo Line)</a>
+            </li>
+            <li>
+              <i class="bi bi-envelope text-accent-red me-2" aria-hidden="true"></i>
+              <a href="mailto:concierge@autonova-demo.example">concierge@autonova-demo.example</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="an-footer-bottom">
+        <span>&copy; 2026 AutoNova Automotive Platform. All rights reserved.</span>
+        <span>Demonstration dealership portfolio — sample pricing &amp; specifications.</span>
+        <button type="button" class="an-footer-back-to-top" data-scroll-top aria-label="Scroll back to top of page">
+          <i class="bi bi-arrow-up" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared AutoNova JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
